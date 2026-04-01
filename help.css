@@ -1,0 +1,341 @@
+/* 🌍 GLOBAL */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    line-height: 1.6;
+    color: #222;
+}
+
+/* 🔘 BUTTONS */
+.btn {
+    padding: 12px 25px;
+    text-decoration: none;
+    border-radius: 30px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.primary {
+    background: #2e7d32;
+    color: white;
+}
+
+.primary:hover {
+    background: #1b5e20;
+}
+
+.secondary {
+    border: 2px solid white;
+    color: white;
+}
+
+.secondary:hover {
+    background: white;
+    color: #2e7d32;
+}
+
+/* 🌿 HERO - RESTORED ORIGINAL PROPORTIONS */
+.hero {
+    height: 92vh;
+    min-height: 780px;
+    background: url("images/hero.jpg") center/cover no-repeat;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-overlay {
+    background: linear-gradient(rgba(0,60,30,0.78), rgba(0,60,30,0.93));
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    padding: 20px;
+}
+
+.hero-inner {
+    max-width: 1480px;
+    width: 100%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+/* ==================== SIDE STORIES - ORIGINAL PROPORTIONS ==================== */
+.side-story {
+    position: absolute;
+    width: 300px;
+    opacity: 0;
+    transition: opacity 1s ease;
+    z-index: 10;
+}
+
+.side-story.show {
+    opacity: 1;
+}
+
+.side-story.left  { left: 5%; top: 25%; }
+.side-story.right { right: 5%; top: 45%; }
+
+.story-content img {
+    width: 100%;
+    border-radius: 18px;
+    box-shadow: 0 22px 50px rgba(0,0,0,0.45);
+    margin-bottom: 15px;
+    display: block;
+}
+
+.story-text {
+    color: white !important;
+    text-align: center;
+    display: block !important;
+}
+
+.story-text h3 {
+    margin-bottom: 12px;
+    text-shadow: 0 3px 12px rgba(0,0,0,0.9);
+    font-size: 1.65rem;
+}
+
+.story-text p {
+    font-size: 1.05rem;
+    line-height: 1.65;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.8);
+}
+
+.center-donate {
+    text-align: center;
+    max-width: 430px;
+    z-index: 5;
+}
+
+.hero h1 { font-size: 3.3rem; margin-bottom: 18px; line-height: 1.05; }
+.hero p { margin-bottom: 30px; font-size: 1.2rem; }
+.donate-label { font-size: 1.15rem; margin-bottom: 12px; }
+.slider-container { width: 290px; margin: 0 auto 18px; }
+.donate-value { font-size: 34px; font-weight: bold; color: white; margin: 12px 0; }
+
+@media (max-width: 992px) {
+    .side-story { 
+        position: static; 
+        width: 90%; 
+        max-width: 360px; 
+        margin: 40px auto; 
+    }
+    .hero-inner { flex-direction: column; align-items: center; }
+}
+
+/* 🔥 HERO OVERLAY CARDS */
+.hero-cards {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: -120px;
+    position: relative;
+    z-index: 3;
+    padding: 0 20px;
+}
+
+.hero-card {
+    width: 300px;
+    height: 220px;
+    background: white;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    transition: 0.3s;
+}
+
+.hero-card:hover {
+    transform: translateY(-12px);
+}
+
+/* 🐾 ANIMALS */
+.animals {
+    padding: 160px 20px 60px;
+    text-align: center;
+}
+
+.animal-cards {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    flex-wrap: wrap;
+    margin-top: 30px;
+}
+
+.card {
+    width: 280px;
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+}
+
+.card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+.card h3 {
+    margin: 10px 0;
+    color: #2e7d32;
+}
+
+.card p {
+    padding: 0 15px 20px;
+}
+
+/* ❤️ HELP */
+.help {
+    background: #f4fff6;
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.help-options {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    margin-top: 30px;
+    flex-wrap: wrap;
+}
+
+.help-box {
+    width: 250px;
+    padding: 20px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+}
+
+/* 🚨 EMERGENCY */
+.emergency {
+    background: #c62828;
+    color: white;
+    text-align: center;
+    padding: 50px 20px;
+}
+
+.emergency-btn {
+    display: inline-block;
+    margin-top: 15px;
+    background: white;
+    color: #c62828;
+    padding: 12px 25px;
+    border-radius: 30px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.emergency-btn:hover {
+    background: #eee;
+}
+
+/* 💸 DONATE */
+.donate {
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.donation-buttons {
+    margin-top: 25px;
+}
+
+.donate-btn {
+    margin: 10px;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 30px;
+    background: #2e7d32;
+    color: white;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.donate-btn:hover {
+    background: #1b5e20;
+    transform: scale(1.05);
+}
+
+/* 👣 FOOTER */
+footer {
+    background: #1b5e20;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+/* 🏠 HOME BUTTON */
+.home-btn {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    background: rgba(255, 255, 255, 0.9);
+    color: #2e7d32;
+    padding: 10px 18px;
+    border-radius: 25px;
+    font-weight: bold;
+    text-decoration: none;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    z-index: 1000;
+    transition: 0.3s;
+}
+
+.home-btn:hover {
+    background: #2e7d32;
+    color: white;
+}
+
+/* =========================
+   DONATE SLIDER
+========================= */
+.slider-container {
+    width: 290px;
+    margin: 0 auto 18px;
+}
+
+.slider-container input {
+    width: 100%;
+    appearance: none;
+    height: 6px;
+    background: white;
+    border-radius: 5px;
+    outline: none;
+}
+
+.slider-container input::-webkit-slider-thumb {
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    background: #1B5E20;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.donate-value {
+    margin-top: 10px;
+    font-size: 34px;
+    font-weight: bold;
+    color: white;
+}

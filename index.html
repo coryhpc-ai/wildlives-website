@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wildlives Rescue</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <a href="index.html" class="logo">
+    <img src="images/logo.png" alt="Wildlives Logo">
+  </a>
+    <nav>
+        <a href="#">About</a>
+        <a href="#">Projects</a>
+        <a href="help.html">Donate</a>
+        <a href="#">Contact</a>
+    </nav>
+</header>
+
+<!-- FLOATING EMERGENCY BUTTON -->
+<div class="emergency-btn" onclick="scrollToEmergency()">
+    🚨 Emergency
+</div>
+
+<!-- HERO -->
+<section class="hero">
+    <div class="slideshow">
+        <img src="images/thomas-frauenknecht-9ndBmpYojhI-unsplash.jpg" class="active">
+        <img src="images/cheryl-ng-_D66rjVHvG4-unsplash.jpg">
+        <img src="images/vadim-bogulov-xu6WEIATCLQ-unsplash.jpg">
+        <img src="images/lisa-dunne-nKkJsNWMw4A-unsplash.jpg">
+        <img src="images/yuan-yue-IeJC_yYOgUw-unsplash.jpg">
+        <img src="images/richard-stovall-SEZqYPoE9iY-unsplash.jpg">
+    </div>
+
+    <div class="hero-content">
+        <h2>Rescuing British Wildlife</h2>
+        <p>Helping animals recover and return to the wild.</p>
+        <a href="help.html" class="ripple-btn">Donate Now</a>
+    </div>
+</section>
+
+<section class="about">
+    <h2>About Wildlives</h2>
+    <div class="about-cards">
+        <a href="about.html" class="card">
+            <div class="card-image">
+                <img src="images/IMG_5918.jpg" alt="Wildlife rescue">
+            </div>
+            <div class="card-content">
+                <h3>Who We Are</h3>
+                <p>Learn about our mission, facilities, and commitment to rescuing British wildlife.</p>
+            </div>
+        </a>
+
+        <a href="help.html" class="card">
+            <div class="card-image">
+                <img src="images/sollange-brenis-CEY6rmH7XyA-unsplash.jpg" alt="Helping wildlife">
+            </div>
+            <div class="card-content">
+                <h3>How You Can Help</h3>
+                <p>Support our work through donations, volunteering, and raising awareness.</p>
+            </div>
+        </a>
+
+        <a href="projects.html" class="card">
+            <div class="card-image">
+                <img src="images/IMG_5918.jpg" alt="Wildlife care">
+            </div>
+            <div class="card-content">
+                <h3>Our Work</h3>
+                <p>Discover the projects and animals we care for every day.</p>
+            </div>
+        </a>
+    </div>
+</section>
+
+<!-- EMERGENCY -->
+<section class="emergency" id="emergency">
+    <div class="emergency-content">
+        <h2><a href="emergency.html">Emergency Wildlife Rescue</a></h2>
+        <p class="emergency-sub">Found a sick, injured or orphaned animal?</p>
+        <p class="emergency-number">Call <strong>07802 767016</strong></p>
+        <p class="emergency-time">Available 9:30 – 4:30 daily</p>
+        <a href="emergency.html" class="emergency-cta">Get Help Now →</a>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <p>© 2026 Wildlives Rescue</p>
+</footer>
+
+<script>
+/* SLIDESHOW */
+document.addEventListener("DOMContentLoaded", function () {
+    let slides = document.querySelectorAll(".slideshow img");
+    let index = 0;
+    setInterval(() => {
+        slides[index].classList.remove("active");
+        index = (index + 1) % slides.length;
+        slides[index].classList.add("active");
+    }, 3000);
+});
+
+/* SCROLL TO EMERGENCY */
+function scrollToEmergency() {
+    document.getElementById("emergency").scrollIntoView({ behavior: "smooth" });
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,484 @@
+/* RESET */
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* HEADER */
+header {
+    height: 60px;
+    padding: 0 25px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    background: #1B5E20;
+}
+/* LOGO */
+.logo img {
+    height: 95px;   /* 🔥 controls size */
+    width: auto;
+    display: block;
+}
+
+/* LOGO */
+header h1 {
+    font-size: 20px;
+    margin: 0;
+}
+
+/* NAV */
+nav a {
+    font-size: 14px;
+    margin-left: 15px;
+    text-decoration: none;
+    color: white;
+}
+
+nav a {
+    color: white;
+    margin-left: 20px;
+    text-decoration: none;
+}
+
+/* HERO */
+.hero {
+    position: relative;
+    height: 60vh;
+    width: 100%;
+    overflow: hidden;
+
+    display: block; /* 🔥 stops flex/grid splitting */
+}
+
+/* keep slideshow behind */
+.slideshow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* FIX TEXT POSITION */
+.hero-content {
+    position: absolute;   /* 🔥 important */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    text-align: center;
+    width: 100%;
+}
+
+/* SLIDESHOW */
+.slideshow {
+    position: absolute;
+    inset: 0;
+}
+
+.slideshow img {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
+.slideshow img.active {
+    opacity: 1;
+}
+
+.slideshow img.active {
+    opacity: 1;
+}
+
+/* DARK OVERLAY */
+.hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.4);
+}
+
+/* HERO TEXT */
+.hero-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    text-align: center;
+    color: white;
+    z-index: 2;
+
+    width: 90%;
+    max-width: 600px;
+}
+
+/* DONATE BUTTON (WHITE → DARK GREEN) */
+.ripple-btn {
+    display: inline-block;
+    padding: 12px 24px;
+
+    background: white;
+    color: #1B5E20;
+
+    border: 2px solid #1B5E20;
+    border-radius: 6px;
+
+    text-decoration: none;
+    font-weight: 600;
+
+    transition: all 0.3s ease;
+}
+
+.ripple-btn:hover {
+    background: #1B5E20;
+    color: white;
+    border: 2px solid #1B5E20;
+}
+
+.ripple-btn:hover {
+    background: #1B5E20;
+    color: white;
+    transform: translateY(-2px);
+}
+
+/* FLOATING BUTTON */
+.emergency-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+
+    background: #d32f2f;
+    color: white;
+
+    padding: 10px 16px;
+    border-radius: 50px;
+
+    font-size: 13px;
+    font-weight: 600;
+
+    box-shadow: 0 6px 15px rgba(0,0,0,0.25);
+
+    cursor: pointer;
+    z-index: 999;
+
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.emergency-btn:hover {
+    transform: scale(1.05);
+}
+
+/* SECTIONS */
+section {
+    padding: 60px 20px;
+    text-align: center;
+}
+
+/* EMERGENCY SECTION */
+.emergency {
+    position: relative;
+    min-height: 70vh; /* 🔥 bigger section */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+    color: white;
+
+    background: url('images/injured-sick-hedgehog-blog_b2198dd6-5ee8-4c2c-88a8-2e8c9e3ca7eb.jpg') center/cover no-repeat;
+    overflow: hidden;
+}
+
+.emergency-page {
+    padding: 80px 20px;
+    text-align: center;
+}
+
+.emergency-page h1 {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.intro {
+    max-width: 600px;
+    margin: 0 auto 30px;
+}
+
+.call-box {
+    background: #d32f2f;
+    color: white;
+    padding: 30px;
+    border-radius: 10px;
+    display: inline-block;
+    margin-bottom: 30px;
+}
+
+.call-box .number {
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.info {
+    max-width: 600px;
+    margin: auto;
+    opacity: 0.8;
+}
+
+/* RED OVERLAY */
+.emergency::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(180, 20, 20, 0.75); /* nicer red */
+}
+
+/* CONTENT */
+.emergency-content {
+    position: relative;
+    z-index: 2;
+    max-width: 700px;
+    padding: 20px;
+}
+
+/* TITLE */
+.emergency h2 {
+    font-size: 40px;
+    margin-bottom: 15px;
+}
+
+.emergency h2 a {
+    color: white;
+    text-decoration: none;
+}
+
+/* SUBTEXT */
+.emergency-sub {
+    font-size: 18px;
+    margin-bottom: 20px;
+    opacity: 0.9;
+}
+
+/* PHONE */
+.emergency-number {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+/* TIME */
+.emergency-time {
+    font-size: 14px;
+    margin-bottom: 25px;
+    opacity: 0.8;
+}
+
+/* BUTTON */
+.emergency-cta {
+    display: inline-block;
+    padding: 12px 24px;
+    background: white;
+    color: #b71c1c;
+    border-radius: 30px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.emergency-cta:hover {
+    background: #f5f5f5;
+}
+
+/* RED OVERLAY */
+.emergency::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(211, 47, 47, 0.7);
+}
+
+/* CONTENT ABOVE */
+.emergency * {
+    position: relative;
+    z-index: 1;
+}
+
+/* FOOTER */
+footer {
+    background: #222;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+/* =========================
+   ABOUT SECTION
+========================= */
+.about {
+    background: #f4f7f4; /* soft green-grey instead of white */
+    padding: 80px 20px;
+    text-align: center;
+}
+
+.about h2 {
+    font-size: 32px;
+    margin-bottom: 50px;
+    color: #1B5E20;
+}
+
+
+/* =========================
+   CARD GRID
+========================= */
+.about-cards {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+
+/* =========================
+   CARD
+========================= */
+.card {
+    width: 300px;
+    background: white;
+    border-radius: 14px;
+    overflow: hidden;
+    text-decoration: none;
+    color: #222;
+
+    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+    transition: 0.3s;
+}
+
+
+/* =========================
+   IMAGE (BIGGER SECTION)
+========================= */
+.card-image {
+    height: 220px;
+    overflow: hidden;
+}
+
+.card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+    /* 🔥 diagonal cut */
+    clip-path: polygon(0 0, 100% 0, 100% 70%, 0 100%);
+}
+
+
+/* =========================
+   TEXT
+========================= */
+.card-content {
+    padding: 25px;
+}
+
+.card-content h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: #1B5E20;
+}
+
+.card-content p {
+    font-size: 15px;
+    line-height: 1.6;
+    color: #555;
+}
+
+
+/* =========================
+   HOVER (SUBTLE, PROFESSIONAL)
+========================= */
+.card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+}
+
+.about {
+    background: #ffffff;
+    padding: 80px 20px;
+    text-align: center;
+}
+
+
+.about h2 {
+    color: #1B5E20;
+}
+
+.card-content p {
+    color: #555;
+}
+
+.ripple-btn {
+    display: inline-block;
+    padding: 12px 20px;
+    background: #93B537;
+    color: white;
+    border-radius: 6px;
+    text-decoration: none;
+}
+
+/* =========================
+   STORY SECTION
+========================= */
+.story-section {
+    padding: 100px 20px;
+    background: #f4f7f4;
+}
+
+/* BLOCK */
+.story-block {
+    max-width: 800px;
+    margin: 80px auto;
+    text-align: center;
+
+    opacity: 0;
+    transform: translateY(80px);
+    transition: all 0.8s ease;
+}
+
+/* IMAGE */
+.story-block img {
+    width: 100%;
+    max-width: 500px;
+    border-radius: 16px;
+    margin-bottom: 20px;
+
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+}
+
+/* TEXT */
+.story-text {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.8s ease 0.3s;
+}
+
+/* ACTIVE (when visible) */
+.story-block.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.story-block.show .story-text {
+    opacity: 1;
+    transform: translateY(0);
+}

@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Help Wildlife | Wildlives</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, sans-serif; }
+        body { line-height: 1.7; color: #222; }
+
+        .btn {
+            padding: 12px 28px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: 0.3s;
+            display: inline-block;
+        }
+        .primary { background: #2e7d32; color: white; }
+        .primary:hover { background: #1b5e20; }
+
+        /* HERO */
+        .hero {
+            height: 82vh;
+            min-height: 680px;
+            background: url("images/hero.jpg") center/cover no-repeat;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .hero-overlay {
+            background: linear-gradient(rgba(0,60,30,0.75), rgba(0,60,30,0.9));
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            padding: 20px;
+        }
+        .hero-inner {
+            max-width: 1480px;
+            width: 100%;
+            position: relative;
+            display: flex;
+            justify-content: center;
+        }
+
+        /* SINGLE STORY ANIMATION */
+        .side-story {
+            position: absolute;
+            width: 240px;
+            opacity: 0;
+            transition: opacity 1.2s ease;
+            z-index: 10;
+        }
+        .side-story.show { opacity: 1; }
+        .side-story.left  { left: 5%; top: 18%; }
+        .side-story.right { right: 5%; top: 38%; }
+
+        .story-content img {
+            width: 100%;
+            border-radius: 16px;
+            box-shadow: 0 18px 40px rgba(0,0,0,0.45);
+            margin-bottom: 10px;
+            display: block;
+            opacity: 0;
+            transition: opacity 1.2s ease;
+        }
+        .side-story.show .story-content img { opacity: 1; }
+
+        .story-text {
+            color: white !important;
+            text-align: center;
+            display: block !important;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.9s ease 0.9s;
+        }
+        .side-story.show .story-text { opacity: 1; transform: translateY(0); }
+
+        .story-text h3 { margin-bottom: 8px; text-shadow: 0 3px 12px rgba(0,0,0,0.9); font-size: 1.4rem; }
+        .story-text p { font-size: 0.95rem; line-height: 1.55; text-shadow: 0 2px 10px rgba(0,0,0,0.8); }
+
+        .center-donate { text-align: center; max-width: 400px; z-index: 5; }
+        .hero h1 { font-size: 2.85rem; margin-bottom: 14px; line-height: 1.05; }
+        .hero p { margin-bottom: 24px; font-size: 1.1rem; }
+        .donate-label { font-size: 1.05rem; margin-bottom: 10px; }
+        .slider-container { width: 260px; margin: 0 auto 14px; }
+        .donate-value { font-size: 30px; font-weight: bold; color: white; margin: 8px 0; }
+
+        @media (max-width: 992px) {
+            .side-story { position: static; width: 85%; max-width: 300px; margin: 25px auto; }
+            .hero-inner { flex-direction: column; align-items: center; }
+        }
+
+        /* HERO CARDS */
+        .hero-cards {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin-top: -95px;
+            position: relative;
+            z-index: 3;
+            padding: 0 20px;
+        }
+        .hero-card {
+            width: 260px;
+            background: #f8fff9;
+            border-radius: 20px;
+            padding: 28px 22px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: 0.3s;
+        }
+        .hero-card:hover { transform: translateY(-8px); }
+
+        /* HOW YOU CAN HELP (moved up) */
+        .help {
+            background: #f8fff9;
+            padding: 70px 20px;
+            text-align: center;
+        }
+        .help-options {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+        .help-box {
+            width: 260px;
+            background: white;
+            border-radius: 20px;
+            padding: 28px 22px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        /* VOLUNTEER SECTION */
+        .volunteer {
+            padding: 70px 20px;
+            background: #e8f5e9;
+            text-align: center;
+        }
+        .volunteer h2 { font-size: 2.4rem; margin-bottom: 20px; color: #2e7d32; }
+        .volunteer p { max-width: 800px; margin: 0 auto 40px; font-size: 1.1rem; }
+        .volunteer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 25px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        .volunteer-card {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            text-align: left;
+        }
+        .volunteer-card h3 { color: #2e7d32; margin-bottom: 12px; }
+
+        /* MORE ABOUT US / MISSION */
+        .mission {
+            padding: 80px 20px;
+            background: #f8fff9;
+            display: flex;
+            align-items: center;
+            gap: 60px;
+            flex-wrap: wrap;
+        }
+        .mission-text { flex: 1; min-width: 300px; }
+        .mission-text h2 { font-size: 2.2rem; margin-bottom: 20px; color: #2e7d32; }
+        .mission-image { flex: 1; min-width: 300px; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.15); }
+
+        .stats {
+            background: #f8fff9;
+            padding: 50px 20px;
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+        .stat-card {
+            background: white;
+            padding: 30px 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            text-align: center;
+            min-width: 220px;
+        }
+        .stat-card .number { font-size: 3.2rem; font-weight: bold; color: #2e7d32; }
+
+        .reasons {
+            padding: 70px 20px;
+            background: #f8fff9;
+        }
+        .reasons-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .reason-card {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        .reason-card h3 { color: #2e7d32; margin-bottom: 12px; }
+
+        .emergency { background: #c62828; color: white; text-align: center; padding: 42px 20px; }
+        .emergency-btn { display: inline-block; margin-top: 12px; background: white; color: #c62828; padding: 11px 24px; border-radius: 30px; font-weight: bold; text-decoration: none; }
+        .emergency-btn:hover { background: #eee; }
+
+        .donate { padding: 48px 20px; text-align: center; }
+        .donation-buttons { margin-top: 22px; }
+        .donate-btn {
+            margin: 6px;
+            padding: 13px 26px;
+            border: none;
+            border-radius: 30px;
+            background: #2e7d32;
+            color: white;
+            font-size: 1.05rem;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .donate-btn:hover { background: #1b5e20; transform: scale(1.05); }
+
+        footer { background: #1b5e20; color: white; text-align: center; padding: 18px; }
+
+        .home-btn {
+            position: fixed;
+            top: 18px; left: 18px;
+            background: rgba(255,255,255,0.9);
+            color: #2e7d32;
+            padding: 9px 16px;
+            border-radius: 25px;
+            font-weight: bold;
+            text-decoration: none;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            z-index: 1000;
+        }
+    </style>
+</head>
+<body>
+
+    <a href="index.html" class="home-btn">← Home</a>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-overlay">
+            <div class="hero-inner">
+                <div class="side-story left" id="story-left">
+                    <div class="story-content">
+                        <img id="left-img" src="images/baby fawn (1).jpg" alt="Fawn">
+                        <div class="story-text">
+                            <h3 id="left-title">Baby Fawn Rescue</h3>
+                            <p id="left-text">This baby fawn was found alone and in need of help. After care and monitoring, it was successfully returned to the wild.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="side-story right" id="story-right">
+                    <div class="story-content">
+                        <img id="right-img" src="images/bird-fishing-line.jpg" alt="Bird">
+                        <div class="story-text">
+                            <h3 id="right-title">Fishing Line Tragedy</h3>
+                            <p id="right-text">Entangled in fishing line, this bird was rescued and treated before returning to flight. Without quick intervention he would not have survived.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="center-donate">
+                    <h1>Protecting Wildlife,<br>Saving Lives</h1>
+                    <p>Your support helps rescue, rehabilitate, and release animals in need.</p>
+                    <p class="donate-label">Choose your donation</p>
+                    <div class="slider-container">
+                        <input type="range" min="0" max="7" step="1" value="3" id="donateRange">
+                        <div class="donate-value">£<span id="donateAmount">10</span></div>
+                    </div>
+                    <a href="#" id="donateBtn" class="btn primary">Donate £10</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- HERO CARDS -->
+    <div class="hero-cards">
+        <div class="hero-card"><h3>Rescue</h3><p>We respond quickly to animals in danger or distress.</p></div>
+        <div class="hero-card"><h3>Rehabilitate</h3><p>Providing expert care to help animals recover fully.</p></div>
+        <div class="hero-card"><h3>Release</h3><p>Returning healthy animals safely back into the wild.</p></div>
+    </div>
+
+    <!-- HOW YOU CAN HELP -->
+    <section class="help">
+        <h2>How You Can Help</h2>
+        <div class="help-options">
+            <div class="help-box"><h3>Donate</h3><p>Your donations directly fund food, medical care, and rescue operations.</p></div>
+            <div class="help-box"><h3>Volunteer</h3><p>Give your time and help us care for animals and support rescues.</p></div>
+            <div class="help-box"><h3>Spread Awareness</h3><p>Share our mission and help protect wildlife in your community.</p></div>
+        </div>
+    </section>
+
+    <!-- VOLUNTEER SECTION -->
+    <section class="volunteer">
+        <h2>Volunteer With Us</h2>
+        <p>Wildlives is dependent upon volunteer help. We need more volunteers, especially now the summer season is coming and we expect many orphans.</p>
+        <p style="margin-top: 20px;">The work involves cleaning, feeding and caring for a wide range of animals. No previous experience is necessary — full training is given.</p>
+        
+        <div class="volunteer-grid">
+            <div class="volunteer-card"><h3>Who We Need</h3><p>Hard-working, dependable people who love animals and enjoy working outdoors.</p></div>
+            <div class="volunteer-card"><h3>What You’ll Do</h3><p>Cleaning, feeding, and caring for wildlife. Summer work is varied and unpredictable.</p></div>
+            <div class="volunteer-card"><h3>The Benefits</h3><p>Gain valuable hands-on experience with wildlife. Perfect for students or anyone passionate about nature.</p></div>
+            <div class="volunteer-card"><h3>How to Apply</h3><p>Ring Rosie on <strong>01206 251174</strong> to arrange a visit.</p></div>
+        </div>
+    </section>
+
+    <!-- MORE ABOUT US / MISSION -->
+    <section class="mission">
+        <div class="mission-text">
+            <h2>More About Us</h2>
+            <p><strong>Our Story</strong><br>Wildlives was set up by Rosie Catford in September 1995. From a few boxes in her conservatory, we have grown into a six-acre rescue centre with purpose-built pens, an animal hospital, and a nature reserve.</p>
+        </div>
+        <img src="images/wildlife-group.jpg" alt="Wildlives team" class="mission-image">
+    </section>
+
+    <!-- STATS -->
+    <div class="stats">
+        <div class="stat-card"><div class="number">1,395</div><p>Animals admitted in 2004</p></div>
+        <div class="stat-card"><div class="number">8</div><p>Years protecting wildlife</p></div>
+        <div class="stat-card"><div class="number">98%</div><p>Successful release rate</p></div>
+    </div>
+
+    <!-- REASONS -->
+    <section class="reasons">
+        <div class="reasons-grid">
+            <div class="reason-card"><h3>Quality</h3><p>Expert veterinary care and proven rehabilitation methods.</p></div>
+            <div class="reason-card"><h3>Speed</h3><p>24/7 emergency response for injured wildlife.</p></div>
+            <div class="reason-card"><h3>Transparency</h3><p>Every donation is tracked. You can see exactly how your support is saving lives.</p></div>
+            <div class="reason-card"><h3>Local Impact</h3><p>Protecting the wildlife in your own community.</p></div>
+        </div>
+    </section>
+
+    <!-- EMERGENCY -->
+    <section class="emergency">
+        <h2>Found an Injured Animal?</h2>
+        <p>Contact our emergency rescue team immediately.</p>
+        <a href="#" class="btn emergency-btn">Call Now</a>
+    </section>
+
+    <!-- DONATE -->
+    <section id="donate" class="donate">
+        <h2>Make a Donation</h2>
+        <p>Every contribution helps save lives.</p>
+        <div class="donation-buttons">
+            <button class="donate-btn" data-amount="5">£5</button>
+            <button class="donate-btn" data-amount="10">£10</button>
+            <button class="donate-btn" data-amount="20">£20</button>
+            <button class="donate-btn" data-amount="50">£50</button>
+        </div>
+        <a href="index.html" class="back-home" style="display:inline-block;margin-top:30px;padding:14px 30px;background:#2e7d32;color:white;border-radius:30px;font-weight:bold;">← Back to Home</a>
+    </section>
+
+    <footer>
+        <p>© 2026 Wildlives | Protecting British Wildlife</p>
+    </footer>
+
+    <script>
+        // Donation Slider
+        const slider = document.getElementById("donateRange");
+        const amount = document.getElementById("donateAmount");
+        const button = document.getElementById("donateBtn");
+
+        const values = [1, 2, 5, 10, 20, 50, 100, "Custom"];
+        const links  = ["https://buy.stripe.com/link1","https://buy.stripe.com/link2","https://buy.stripe.com/link5","https://buy.stripe.com/link10","https://buy.stripe.com/link20","https://buy.stripe.com/link50","https://buy.stripe.com/link100","#"];
+
+        function updateDonation(index) {
+            let selected = values[index];
+            if (selected === "Custom") {
+                amount.textContent = "Custom";
+                button.textContent = "Enter Amount";
+                button.href = "#donate";
+            } else {
+                amount.textContent = selected;
+                button.textContent = "Donate £" + selected;
+                button.href = links[index];
+            }
+        }
+
+        // Story Animation
+        const stories = [
+            { img: "images/baby fawn (1).jpg", title: "Baby Fawn Rescue", text: "This baby fawn was found alone and in need of help. After care and monitoring, it was successfully returned to the wild." },
+            { img: "images/bird-fishing-line.jpg", title: "Fishing Line Tragedy", text: "Entangled in fishing line, this bird was rescued and treated before returning to flight. Without quick intervention he would not have survived." },
+            { img: "images/hedgehog.jpg", title: "Hedgehog Rescue", text: "This hedgehog was found injured by the roadside. After treatment and rehabilitation, it was safely released back into the wild." },
+            { img: "images/fox.jpg", title: "Fox Rescue", text: "Urban fox hit by a car. We provided emergency surgery and care until it was strong enough to return to its territory." }
+        ];
+
+        const leftStory  = document.getElementById("story-left");
+        const rightStory = document.getElementById("story-right");
+        let currentIndex = 0;
+        let showLeft = true;
+
+        function cycleStory() {
+            const story = stories[currentIndex % stories.length];
+            leftStory.classList.remove('show');
+            rightStory.classList.remove('show');
+
+            if (showLeft) {
+                document.getElementById("left-img").src = story.img;
+                document.getElementById("left-title").textContent = story.title;
+                document.getElementById("left-text").textContent = story.text;
+                leftStory.classList.add('show');
+            } else {
+                document.getElementById("right-img").src = story.img;
+                document.getElementById("right-title").textContent = story.title;
+                document.getElementById("right-text").textContent = story.text;
+                rightStory.classList.add('show');
+            }
+            showLeft = !showLeft;
+            currentIndex++;
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            updateDonation(parseInt(slider.value));
+            cycleStory();
+            setInterval(cycleStory, 5000);
+        });
+    </script>
+</body>
+</html>
