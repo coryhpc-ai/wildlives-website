@@ -719,3 +719,306 @@ footer {
         font-size: 28px;
     }
 }
+
+/* ====================== HERO ====================== */
+.emergency-hero {
+    display: flex;
+    flex-direction: column;        /* Default to stack on all devices */
+}
+
+.hero-left {
+    background: #f7f9f7;
+    padding: 50px 20px;
+}
+
+.hero-right {
+    position: relative;
+    height: 320px;                 /* Nice height for slideshow */
+    overflow: hidden;
+}
+
+.hero-slideshow img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 1s ease;
+}
+
+.hero-slideshow img.active {
+    opacity: 1;
+}
+
+/* Remove diagonal completely on mobile and make it clean */
+.hero-right::before {
+    display: none;                 /* No diagonal at all */
+}
+
+/* Desktop only - keep diagonal if you want */
+@media (min-width: 769px) {
+    .emergency-hero {
+        flex-direction: row;
+    }
+    .hero-left {
+        width: 38%;
+        padding: 60px 50px;
+    }
+    .hero-right {
+        width: 62%;
+        height: auto;
+    }
+    .hero-right::before {
+        display: block;            /* Diagonal only on larger screens */
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -1px;
+        width: 120px;
+        height: 100%;
+        background: #f7f9f7;
+        clip-path: polygon(100% 0, 0 100%, 0 0);
+        z-index: 2;
+    }
+}
+
+/* ====================== QUICK STEPS ====================== */
+.quick-steps {
+    padding: 50px 20px;
+    background: #f7f9f7;
+    text-align: center;
+    margin-top: 0;
+}
+
+.quick-steps h2 {
+    color: #1B5E20;
+    margin-bottom: 35px;
+}
+
+.grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px;
+    justify-content: center;
+}
+
+.card {
+    background: white;
+    padding: 22px;
+    border-radius: 12px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+    width: 100%;
+    max-width: 280px;
+}
+
+/* ====================== BUTTONS ====================== */
+.animal-buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-top: 15px;
+}
+
+.animal-buttons button {
+    background: #1B5E20;
+    color: white;
+    border: none;
+    padding: 14px 16px;
+    border-radius: 8px;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+    .hero-left {
+        padding: 40px 20px;
+    }
+    .animal-buttons button {
+        padding: 16px;
+        font-size: 16px;
+    }
+}/* ====================== HERO ====================== */
+.emergency-hero {
+    display: flex;
+    flex-direction: column;        /* Default to stack on all devices */
+}
+
+.hero-left {
+    background: #f7f9f7;
+    padding: 50px 20px;
+}
+
+.hero-right {
+    position: relative;
+    height: 320px;                 /* Nice height for slideshow */
+    overflow: hidden;
+}
+
+.hero-slideshow img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 1s ease;
+}
+
+.hero-slideshow img.active {
+    opacity: 1;
+}
+
+/* Remove diagonal completely on mobile and make it clean */
+.hero-right::before {
+    display: none;                 /* No diagonal at all */
+}
+
+/* Desktop only - keep diagonal if you want */
+@media (min-width: 769px) {
+    .emergency-hero {
+        flex-direction: row;
+    }
+    .hero-left {
+        width: 38%;
+        padding: 60px 50px;
+    }
+    .hero-right {
+        width: 62%;
+        height: auto;
+    }
+    .hero-right::before {
+        display: block;            /* Diagonal only on larger screens */
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -1px;
+        width: 120px;
+        height: 100%;
+        background: #f7f9f7;
+        clip-path: polygon(100% 0, 0 100%, 0 0);
+        z-index: 2;
+    }
+}
+
+/* ====================== QUICK STEPS ====================== */
+.quick-steps {
+    padding: 50px 20px;
+    background: #f7f9f7;
+    text-align: center;
+    margin-top: 0;
+}
+
+.quick-steps h2 {
+    color: #1B5E20;
+    margin-bottom: 35px;
+}
+
+.grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px;
+    justify-content: center;
+}
+
+.card {
+    background: white;
+    padding: 22px;
+    border-radius: 12px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+    width: 100%;
+    max-width: 280px;
+}
+
+/* ====================== BUTTONS ====================== */
+.animal-buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-top: 15px;
+}
+
+.animal-buttons button {
+    background: #1B5E20;
+    color: white;
+    border: none;
+    padding: 14px 16px;
+    border-radius: 8px;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+    .hero-left {
+        padding: 40px 20px;
+    }
+    .animal-buttons button {
+        padding: 16px;
+        font-size: 16px;
+    }
+}
+
+/* Smooth quiz transitions */
+.step {
+    transition: opacity 0.4s ease;
+    opacity: 0;
+}
+
+.step.active {
+    opacity: 1;
+}
+
+/* Ripple effect for urgent call */
+.result-urgent.ripple {
+    animation: ripple 2s infinite ease-in-out;
+}
+
+@keyframes ripple {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(211, 47, 47, 0.4); }
+    70% { box-shadow: 0 0 0 15px rgba(211, 47, 47, 0); }
+}
+
+/* Nice big urgent number */
+.big-number {
+    font-size: 1.6rem;
+    margin: 15px 0 5px;
+    color: #d32f2f;
+}
+
+/* Button grid */
+.animal-buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-top: 15px;
+}
+
+.animal-buttons button {
+    background: #1B5E20;
+    color: white;
+    border: none;
+    padding: 14px 12px;
+    border-radius: 8px;
+    font-size: 15px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.animal-buttons button:active {
+    transform: scale(0.95);
+}
+
+/* Mobile cleanup */
+@media (max-width: 768px) {
+    .hero-right::before { display: none; }
+    .hero-right { height: 280px; }
+    
+    .animal-buttons {
+        grid-template-columns: 1fr;
+    }
+}
+
