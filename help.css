@@ -11,7 +11,7 @@ body {
     color: #222;
 }
 
-/* 🔘 BUTTONS */
+/* 🔘 BUTTONS - Improved */
 .btn {
     padding: 12px 25px;
     text-decoration: none;
@@ -29,6 +29,56 @@ body {
     background: #1b5e20;
 }
 
+/* ====================== COOL DONATE BUTTON ====================== */
+.donate-btn {
+    background: #1e7d32;           /* Richer, deeper green */
+    color: white;
+    padding: 15px 32px;
+    border: none;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    box-shadow: 0 8px 25px rgba(30, 125, 50, 0.35);
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+}
+
+.donate-btn:hover {
+    transform: scale(1.08) translateY(-4px);
+    box-shadow: 0 15px 35px rgba(30, 125, 50, 0.5);
+    background: #166d2a;
+}
+
+.donate-btn:active {
+    transform: scale(0.96);
+}
+
+/* Nice ripple effect on click */
+.donate-btn::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255,255,255,0.35);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.6s ease, height 0.6s ease;
+    opacity: 0;
+}
+
+.donate-btn:active::after {
+    width: 300px;
+    height: 300px;
+    opacity: 1;
+}
+
+/* ====================== REST OF YOUR CSS ====================== */
+
 .secondary {
     border: 2px solid white;
     color: white;
@@ -39,7 +89,7 @@ body {
     color: #2e7d32;
 }
 
-/* 🌿 HERO - RESTORED ORIGINAL PROPORTIONS */
+/* 🌿 HERO */
 .hero {
     height: 92vh;
     min-height: 780px;
@@ -70,7 +120,7 @@ body {
     justify-content: center;
 }
 
-/* ==================== SIDE STORIES - ORIGINAL PROPORTIONS ==================== */
+/* SIDE STORIES */
 .side-story {
     position: absolute;
     width: 300px;
@@ -134,7 +184,7 @@ body {
     .hero-inner { flex-direction: column; align-items: center; }
 }
 
-/* 🔥 HERO OVERLAY CARDS */
+/* HERO CARDS */
 .hero-cards {
     display: flex;
     justify-content: center;
@@ -163,7 +213,7 @@ body {
     transform: translateY(-12px);
 }
 
-/* 🐾 ANIMALS */
+/* ANIMALS */
 .animals {
     padding: 160px 20px 60px;
     text-align: center;
@@ -205,7 +255,7 @@ body {
     padding: 0 15px 20px;
 }
 
-/* ❤️ HELP */
+/* HELP */
 .help {
     background: #f4fff6;
     padding: 60px 20px;
@@ -228,7 +278,7 @@ body {
     box-shadow: 0 3px 10px rgba(0,0,0,0.1);
 }
 
-/* 🚨 EMERGENCY */
+/* EMERGENCY */
 .emergency {
     background: #c62828;
     color: white;
@@ -251,7 +301,7 @@ body {
     background: #eee;
 }
 
-/* 💸 DONATE */
+/* DONATE SECTION */
 .donate {
     padding: 60px 20px;
     text-align: center;
@@ -278,7 +328,7 @@ body {
     transform: scale(1.05);
 }
 
-/* 👣 FOOTER */
+/* FOOTER */
 footer {
     background: #1b5e20;
     color: white;
@@ -286,7 +336,7 @@ footer {
     padding: 20px;
 }
 
-/* 🏠 HOME BUTTON */
+/* HOME BUTTON */
 .home-btn {
     position: fixed;
     top: 20px;
@@ -307,9 +357,7 @@ footer {
     color: white;
 }
 
-/* =========================
-   DONATE SLIDER
-========================= */
+/* DONATE SLIDER */
 .slider-container {
     width: 290px;
     margin: 0 auto 18px;
