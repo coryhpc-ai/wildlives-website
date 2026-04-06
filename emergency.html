@@ -9,6 +9,7 @@
 </head>
 <body>
 
+<!-- HEADER -->
 <header>
   <a href="index.html" class="logo">
     <img src="images/logo.png" alt="Wildlives Logo">
@@ -22,16 +23,17 @@
   </nav>
 </header>
 
+<!-- HERO -->
 <section class="emergency-hero">
     <div class="hero-left">
         <h1>Wildlife Emergency</h1>
         <p class="sub">If you find an injured or sick animal, act immediately.</p>
         <p class="info">Before handling any wild animal, there are important principles you must be aware of. Please take a moment to read the guidance below before intervening.</p>
 
+        <!-- QUIZ -->
         <div class="quiz-box">
             <h3>Wildlife Emergency Checker</h3>
 
-            <!-- Step 1 -->
             <div class="step active" id="step1">
                 <p>What animal is it?</p>
                 <div class="animal-buttons">
@@ -44,7 +46,6 @@
                 </div>
             </div>
 
-            <!-- Step 2 -->
             <div class="step" id="step2">
                 <p>What condition is the animal in?</p>
                 <div class="animal-buttons">
@@ -57,7 +58,6 @@
                 </div>
             </div>
 
-            <!-- Step 3 -->
             <div class="step" id="step3">
                 <p>Is it a baby animal?</p>
                 <div class="animal-buttons">
@@ -91,10 +91,61 @@
     </div>
 </section>
 
-<!-- Rest of your sections (animal-help, needs-help, warning, footer) stay the same -->
+<!-- COMMON SITUATIONS -->
+<section class="animal-help">
+    <h2>Common Situations</h2>
+    <div class="animal-grid">
+        <div class="animal-card" data-animal="hedgehog">
+            <img src="images/IMG_5933.jpg" alt="Hedgehog">
+            <h3>Hedgehogs</h3>
+            <button onclick="showAnimalInfo('hedgehog')">Show Info</button>
+        </div>
+        <div class="animal-card" data-animal="birds">
+            <img src="images/IMG_5928.jpg" alt="Bird">
+            <h3>Birds</h3>
+            <button onclick="showAnimalInfo('birds')">Show Info</button>
+        </div>
+        <div class="animal-card" data-animal="fox">
+            <img src="images/baby fox (3).jpg" alt="Fox">
+            <h3>Fox Cubs</h3>
+            <button onclick="showAnimalInfo('fox')">Show Info</button>
+        </div>
+        <div class="animal-card" data-animal="deer">
+            <img src="images/baby fawn (1).jpg" alt="Deer">
+            <h3>Deer</h3>
+            <button onclick="showAnimalInfo('deer')">Show Info</button>
+        </div>
+    </div>
+
+    <div class="animal-info" id="animalInfo">
+        <div class="info-content" id="infoContent"></div>
+    </div>
+</section>
+
+<!-- NEEDS HELP -->
+<section class="needs-help">
+    <h2>When It Needs Help</h2>
+    <div class="grid">
+        <div class="card">Cat attack</div>
+        <div class="card">Entangled in wire or netting</div>
+        <div class="card">Visible injuries</div>
+        <div class="card">Covered in flies or maggots</div>
+        <div class="card">Collapsed or unresponsive</div>
+    </div>
+</section>
+
+<!-- WARNING -->
+<section class="warning">
+    <h2>Do Not Attempt Treatment</h2>
+    <p>Removing entanglements or treating injuries yourself can cause serious harm. Always seek professional help.</p>
+</section>
+
+<footer>
+    <p>© 2026 Wildlives Rescue</p>
+</footer>
 
 <script>
-// Smooth Slideshow
+// Slideshow
 document.addEventListener("DOMContentLoaded", () => {
     const slides = document.querySelectorAll(".hero-slideshow img");
     let i = 0;
@@ -105,20 +156,18 @@ document.addEventListener("DOMContentLoaded", () => {
     }, 3200);
 });
 
-// Quiz with smooth transitions
+// Quiz
 let animal = "", condition = "", isBaby = false;
 
 function nextStep(current, next) {
     const curr = document.getElementById(current);
     const nxt = document.getElementById(next);
-    
     curr.style.opacity = "0";
     setTimeout(() => {
         curr.classList.remove("active");
         nxt.classList.add("active");
-        nxt.style.opacity = "0";
-        setTimeout(() => nxt.style.opacity = "1", 10);
-    }, 300);
+        nxt.style.opacity = "1";
+    }, 280);
 }
 
 function selectAnimal(type) {
@@ -137,50 +186,42 @@ function setBaby(value) {
 }
 
 function showResult() {
-    document.getElementById("step3").style.opacity = "0";
-    
+    const step3 = document.getElementById("step3");
+    step3.style.opacity = "0";
     setTimeout(() => {
-        document.getElementById("step3").classList.remove("active");
-        
+        step3.classList.remove("active");
         const resultDiv = document.getElementById("result");
         
-        if (condition === "injured" || condition === "attacked" || condition === "trapped" || 
-            condition === "flies" || condition === "collapsed") {
-            
+        if (["injured","attacked","trapped","flies","collapsed"].includes(condition)) {
             resultDiv.innerHTML = `
-                <div class="result-box result-urgent ripple">
+                <div class="result-box result-urgent">
                     <h3>🚨 Call Immediately</h3>
                     <p>This animal needs urgent professional care right now.</p>
                     <p class="big-number"><strong>07802 767016</strong></p>
                 </div>`;
         } else if (isBaby) {
-            resultDiv.innerHTML = `
-                <div class="result-box result-warning">
-                    <h3>Monitor First</h3>
-                    <p>The parent is often nearby. Leave for 1 hour and check again.</p>
-                </div>`;
+            resultDiv.innerHTML = `<div class="result-box result-warning"><h3>Monitor First</h3><p>The parent is often nearby. Leave for 1 hour and check again.</p></div>`;
         } else if (animal === "hedgehog") {
-            resultDiv.innerHTML = `
-                <div class="result-box result-warning">
-                    <h3>Check Carefully</h3>
-                    <p>Hedgehogs seen in daylight usually need help.</p>
-                </div>`;
+            resultDiv.innerHTML = `<div class="result-box result-warning"><h3>Check Carefully</h3><p>Hedgehogs seen in daylight usually need help.</p></div>`;
         } else if (animal === "bird") {
-            resultDiv.innerHTML = `
-                <div class="result-box result-safe">
-                    <h3>Likely Normal</h3>
-                    <p>This may be a fledgling learning to fly.</p>
-                </div>`;
+            resultDiv.innerHTML = `<div class="result-box result-safe"><h3>Likely Normal</h3><p>This may be a fledgling learning to fly.</p></div>`;
         } else {
-            resultDiv.innerHTML = `
-                <div class="result-box result-safe">
-                    <h3>No Immediate Action Needed</h3>
-                    <p>This behaviour appears normal.</p>
-                </div>`;
+            resultDiv.innerHTML = `<div class="result-box result-safe"><h3>No Immediate Action Needed</h3><p>This behaviour appears normal.</p></div>`;
         }
-        
-        resultDiv.style.opacity = "1";
     }, 300);
+}
+
+// Common Situations Info
+const animalData = {
+    hedgehog: `<h3>Hedgehogs</h3><p>Daytime activity: usually means they need help. Autumn weight must be at least 600g...</p>`,
+    birds: `<h3>Birds</h3><p>Fledglings are often learning to fly and don't need rescuing...</p>`,
+    fox: `<h3>Fox Cubs</h3><p>Mother may still be nearby. Observe from distance...</p>`,
+    deer: `<h3>Deer</h3><p>Fawns are often left alone safely while mother feeds...</p>`
+};
+
+function showAnimalInfo(type) {
+    document.getElementById("infoContent").innerHTML = animalData[type] || "<p>More information coming soon.</p>";
+    document.getElementById("animalInfo").style.display = "block";
 }
 </script>
 
