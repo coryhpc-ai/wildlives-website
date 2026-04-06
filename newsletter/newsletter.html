@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Newsletter | Wildlives Rescue</title>
+    <link rel="stylesheet" href="newsletter.css">
+</head>
+<body>
+
+<header>
+  <a href="../index.html" class="logo">
+    <img src="../images/logo.png" alt="Wildlives Logo">
+  </a>
+  <nav>
+    <a href="../index.html">Home</a>
+    <a href="../about.html">About</a>
+    <a href="../projects.html">Projects</a>
+    <a href="../help.html">Help</a>
+    <a href="../emergency.html">Emergency</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="newsletter-hero">
+    <div class="hero-overlay">
+        <div class="hero-content">
+            <h1>Stay Updated with Wildlives Rescue</h1>
+            <p class="subtitle">Monthly stories of rescued animals, emergency updates, and ways you can help our wildlife</p>
+            
+            <form id="newsletterForm" action="https://formspree.io/f/mvzvlobr" method="POST">
+                <div class="signup-form">
+                    <input type="email" name="email" id="email" placeholder="Enter your email address" required>
+                    <button type="submit" id="subscribeBtn">Subscribe</button>
+                </div>
+            </form>
+            
+            <p class="privacy">We respect your privacy • Unsubscribe anytime</p>
+        </div>
+    </div>
+</section>
+
+<!-- BENEFITS -->
+<section class="benefits">
+    <h2>What You'll Receive Every Month</h2>
+    <div class="benefits-grid">
+        <div class="benefit-card"><h3>Rescue Stories</h3><p>Heartwarming real-life stories of animals we've saved.</p></div>
+        <div class="benefit-card"><h3>Emergency Alerts</h3><p>Important updates when wildlife needs urgent help.</p></div>
+        <div class="benefit-card"><h3>How You Can Help</h3><p>Simple actions and impact reports.</p></div>
+    </div>
+</section>
+
+<!-- RECENT EDITIONS -->
+<section class="past-issues">
+    <h2>Recent Editions</h2>
+    <div class="years-grid">
+
+        <div class="year-card" onclick="toggleYear(this)">
+            <h3>2025</h3>
+            <div class="months">
+                <a href="#">January 2025</a><a href="#">February 2025</a><a href="#">March 2025</a>
+                <a href="#">April 2025</a><a href="#">May 2025</a><a href="#">June 2025</a>
+                <a href="#">July 2025</a><a href="#">August 2025</a><a href="#">September 2025</a>
+                <a href="#">October 2025</a><a href="#">November 2025</a><a href="#">December 2025</a>
+            </div>
+        </div>
+
+        <div class="year-card" onclick="toggleYear(this)">
+            <h3>2024</h3>
+            <div class="months">
+                <a href="#">January 2024</a><a href="#">February 2024</a><a href="#">March 2024</a>
+                <a href="#">April 2024</a><a href="#">May 2024</a><a href="#">June 2024</a>
+                <a href="#">July 2024</a><a href="#">August 2024</a><a href="#">September 2024</a>
+                <a href="#">October 2024</a><a href="#">November 2024</a><a href="#">December 2024</a>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<footer>
+    <p>© 2026 Wildlives Rescue • Caring for British Wildlife</p>
+</footer>
+
+<script>
+// Subscribe function - stays on page
+const form = document.getElementById('newsletterForm');
+const button = document.getElementById('subscribeBtn');
+
+form.addEventListener('submit', async function(e) {
+    e.preventDefault();
+
+    const email = document.getElementById('email').value.trim();
+
+    if (!email) {
+        button.textContent = "Please enter email";
+        button.style.backgroundColor = "#d32f2f";
+        setTimeout(() => {
+            button.textContent = "Subscribe";
+            button.style.backgroundColor = "";
+        }, 2000);
+        return;
+    }
+
+    button.textContent = "Subscribing...";
+    button.disabled = true;
+
+    try {
+        const response = await fetch('https://formspree.io/f/mvzvlobr', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+            body: JSON.stringify({ email: email })
+        });
+
+        if (response.ok) {
+            button.textContent = "Subscribed ✓";
+            button.style.backgroundColor = "#2e7d32";
+            alert("Thank you! You've been subscribed to the Wildlives Rescue Newsletter.");
+
+            setTimeout(() => {
+                form.reset();
+                button.textContent = "Subscribe";
+                button.style.backgroundColor = "";
+                button.disabled = false;
+            }, 2500);
+        } else {
+            throw new Error();
+        }
+    } catch (error) {
+        button.textContent = "Try again";
+        button.style.backgroundColor = "#d32f2f";
+        setTimeout(() => {
+            button.textContent = "Subscribe";
+            button.style.backgroundColor = "";
+            button.disabled = false;
+        }, 2500);
+    }
+});
+
+// Toggle Year
+function toggleYear(card) {
+    const months = card.querySelector('.months');
+    const isOpen = months.style.maxHeight && months.style.maxHeight !== '0px';
+
+    document.querySelectorAll('.year-card .months').forEach(m => {
+        m.style.maxHeight = '0px';
+    });
+
+    if (!isOpen) {
+        months.style.maxHeight = months.scrollHeight + "px";
+    }
+}
+</script>
+
+</body>
+</html>
