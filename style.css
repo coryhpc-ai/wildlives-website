@@ -1,394 +1,175 @@
-/* RESET */
-body {
+/* ====================== RESET ====================== */
+* {
     margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
     font-family: 'Poppins', sans-serif;
 }
 
-/* HEADER */
+/* ====================== HEADER (Slightly Smaller) ====================== */
 header {
-    height: 60px;
-    padding: 0 25px;
+    background: #1B5E20;
+    padding: 14px 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
 
+.header-container {
     display: flex;
     align-items: center;
     justify-content: space-between;
-
-    background: #1B5E20;
-}
-/* LOGO */
-.logo img {
-    height: 95px;   /* 🔥 controls size */
-    width: auto;
-    display: block;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 25px;
 }
 
-/* LOGO */
-header h1 {
-    font-size: 20px;
-    margin: 0;
+.logo-text {
+    color: white;
+    font-size: 26px;
+    font-weight: 700;
+    text-decoration: none;
 }
 
-/* NAV */
-nav a {
+.main-nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 15.5px;
+    font-weight: 500;
+    margin-left: 28px;
+    transition: color 0.3s;
+}
+
+.main-nav a:hover {
+    color: #a5d6a7;
+}
+
+/* Emergency Button */
+.emergency-btn {
+    background: #d32f2f;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 50px;
     font-size: 14px;
-    margin-left: 15px;
+    font-weight: 600;
     text-decoration: none;
-    color: white;
+    box-shadow: 0 4px 12px rgba(211, 47, 47, 0.35);
+    transition: all 0.3s;
 }
 
-nav a {
-    color: white;
-    margin-left: 20px;
-    text-decoration: none;
+.emergency-btn:hover {
+    background: #b71c1c;
+    transform: scale(1.05);
 }
 
-/* HERO */
+/* ====================== HERO ====================== */
 .hero {
     position: relative;
-    height: 60vh;
-    width: 100%;
+    height: 65vh;
     overflow: hidden;
-
-    display: block; /* 🔥 stops flex/grid splitting */
-}
-
-/* keep slideshow behind */
-.slideshow {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-}
-
-/* FIX TEXT POSITION */
-.hero-content {
-    position: absolute;   /* 🔥 important */
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 2;
-    text-align: center;
-    width: 100%;
-}
-
-/* SLIDESHOW */
-.slideshow {
-    position: absolute;
-    inset: 0;
 }
 
 .slideshow img {
     position: absolute;
-    top: 0;
-    left: 0;
-
+    inset: 0;
     width: 100%;
     height: 100%;
-
     object-fit: cover;
-
     opacity: 0;
-    transition: opacity 1s ease-in-out;
+    transition: opacity 1.2s ease;
 }
 
 .slideshow img.active {
     opacity: 1;
 }
 
-.slideshow img.active {
-    opacity: 1;
-}
-
-/* DARK OVERLAY */
 .hero::after {
     content: "";
     position: absolute;
     inset: 0;
-    background: rgba(0,0,0,0.4);
+    background: rgba(0, 0, 0, 0.45);
 }
 
-/* HERO TEXT */
 .hero-content {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-
     text-align: center;
     color: white;
     z-index: 2;
-
     width: 90%;
-    max-width: 600px;
-}
-
-/* ====================== SMALLER DONATE BUTTON (No Underline) ====================== */
-.donate-btn {
-    background: #1e7d32;
-    color: white;
-    padding: 12px 28px;
-    border: none;
-    border-radius: 50px;
-    font-size: 1.05rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.4s ease;
-    box-shadow: 0 6px 20px rgba(30, 125, 50, 0.35);
-    position: relative;
-    overflow: hidden;
-    display: inline-block;
-    text-decoration: none;           /* Removes underline */
-}
-
-.donate-btn:hover {
-    transform: scale(1.06) translateY(-3px);
-    box-shadow: 0 12px 28px rgba(30, 125, 50, 0.45);
-    background: #166d2a;
-}
-
-.donate-btn:active {
-    transform: scale(0.95);
-}
-
-/* Ripple effect */
-.donate-btn::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 0;
-    height: 0;
-    background: rgba(255,255,255,0.35);
-    border-radius: 50%;
-    transform: translate(-50%, -50%);
-    transition: width 0.6s ease, height 0.6s ease;
-    opacity: 0;
-}
-
-.donate-btn:active::after {
-    width: 250px;
-    height: 250px;
-    opacity: 1;
-}
-
-/* FLOATING BUTTON */
-.emergency-btn {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-
-    background: #d32f2f;
-    color: white;
-
-    padding: 10px 16px;
-    border-radius: 50px;
-
-    font-size: 13px;
-    font-weight: 600;
-
-    box-shadow: 0 6px 15px rgba(0,0,0,0.25);
-
-    cursor: pointer;
-    z-index: 999;
-
-    display: flex;
-    align-items: center;
-    gap: 6px;
-}
-
-.emergency-btn:hover {
-    transform: scale(1.05);
-}
-
-/* SECTIONS */
-section {
-    padding: 60px 20px;
-    text-align: center;
-}
-
-/* EMERGENCY SECTION */
-.emergency {
-    position: relative;
-    min-height: 70vh; /* 🔥 bigger section */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-
-    color: white;
-
-    background: url('images/injured-sick-hedgehog-blog_b2198dd6-5ee8-4c2c-88a8-2e8c9e3ca7eb.jpg') center/cover no-repeat;
-    overflow: hidden;
-}
-
-.emergency-page {
-    padding: 80px 20px;
-    text-align: center;
-}
-
-.emergency-page h1 {
-    font-size: 36px;
-    margin-bottom: 20px;
-}
-
-.intro {
-    max-width: 600px;
-    margin: 0 auto 30px;
-}
-
-.call-box {
-    background: #d32f2f;
-    color: white;
-    padding: 30px;
-    border-radius: 10px;
-    display: inline-block;
-    margin-bottom: 30px;
-}
-
-.call-box .number {
-    font-size: 28px;
-    font-weight: bold;
-}
-
-.info {
-    max-width: 600px;
-    margin: auto;
-    opacity: 0.8;
-}
-
-/* RED OVERLAY */
-.emergency::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: rgba(180, 20, 20, 0.75); /* nicer red */
-}
-
-/* CONTENT */
-.emergency-content {
-    position: relative;
-    z-index: 2;
     max-width: 700px;
-    padding: 20px;
 }
 
-/* TITLE */
-.emergency h2 {
-    font-size: 40px;
+.hero-content h2 {
+    font-size: 3rem;
     margin-bottom: 15px;
 }
 
-.emergency h2 a {
+.hero-content p {
+    font-size: 1.25rem;
+    margin-bottom: 30px;
+}
+
+.donate-btn {
+    background: #2E7D32;
     color: white;
-    text-decoration: none;
-}
-
-/* SUBTEXT */
-.emergency-sub {
-    font-size: 18px;
-    margin-bottom: 20px;
-    opacity: 0.9;
-}
-
-/* PHONE */
-.emergency-number {
-    font-size: 28px;
-    font-weight: 700;
-    margin-bottom: 10px;
-}
-
-/* TIME */
-.emergency-time {
-    font-size: 14px;
-    margin-bottom: 25px;
-    opacity: 0.8;
-}
-
-/* BUTTON */
-.emergency-cta {
-    display: inline-block;
-    padding: 12px 24px;
-    background: white;
-    color: #b71c1c;
-    border-radius: 30px;
+    padding: 14px 32px;
+    border-radius: 50px;
+    font-size: 1.1rem;
     font-weight: 600;
     text-decoration: none;
-    transition: 0.3s;
+    display: inline-block;
+    transition: all 0.4s;
 }
 
-.emergency-cta:hover {
-    background: #f5f5f5;
+.donate-btn:hover {
+    background: #1B5E20;
+    transform: translateY(-3px);
 }
 
-/* RED OVERLAY */
-.emergency::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: rgba(211, 47, 47, 0.7);
-}
-
-/* CONTENT ABOVE */
-.emergency * {
-    position: relative;
-    z-index: 1;
-}
-
-/* FOOTER */
-footer {
-    background: #222;
-    color: white;
-    text-align: center;
-    padding: 20px;
-}
-
-/* =========================
-   ABOUT SECTION
-========================= */
+/* ====================== ABOUT SECTION - FIXED ====================== */
 .about {
-    background: #f4f7f4; /* soft green-grey instead of white */
+    background: #f8fbf8;
     padding: 80px 20px;
-    text-align: center;
 }
 
 .about h2 {
-    font-size: 32px;
-    margin-bottom: 50px;
     color: #1B5E20;
+    text-align: center;
+    margin-bottom: 60px;
+    font-size: 2.4rem;
 }
 
-
-/* =========================
-   CARD GRID
-========================= */
 .about-cards {
     display: flex;
     gap: 30px;
     justify-content: center;
     flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
-
-/* =========================
-   CARD
-========================= */
 .card {
-    width: 300px;
+    width: 320px;
     background: white;
-    border-radius: 14px;
+    border-radius: 16px;
     overflow: hidden;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+    transition: all 0.4s ease;
     text-decoration: none;
-    color: #222;
-
-    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
-    transition: 0.3s;
+    color: inherit;
 }
 
+.card:hover {
+    transform: translateY(-12px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+}
 
-/* =========================
-   IMAGE (BIGGER SECTION)
-========================= */
 .card-image {
     height: 220px;
     overflow: hidden;
@@ -398,108 +179,100 @@ footer {
     width: 100%;
     height: 100%;
     object-fit: cover;
-
-    /* 🔥 diagonal cut */
-    clip-path: polygon(0 0, 100% 0, 100% 70%, 0 100%);
+    transition: transform 0.5s ease;
 }
 
+.card:hover .card-image img {
+    transform: scale(1.08);
+}
 
-/* =========================
-   TEXT
-========================= */
 .card-content {
     padding: 25px;
 }
 
 .card-content h3 {
-    font-size: 20px;
-    margin-bottom: 10px;
     color: #1B5E20;
+    margin-bottom: 12px;
+    font-size: 1.35rem;
 }
 
 .card-content p {
+    color: #555;
     font-size: 15px;
     line-height: 1.6;
-    color: #555;
 }
 
-
-/* =========================
-   HOVER (SUBTLE, PROFESSIONAL)
-========================= */
-.card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 12px 25px rgba(0,0,0,0.15);
-}
-
-.about {
-    background: #ffffff;
-    padding: 80px 20px;
+/* ====================== EMERGENCY SECTION ====================== */
+.emergency {
+    position: relative;
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     text-align: center;
-}
-
-
-.about h2 {
-    color: #1B5E20;
-}
-
-.card-content p {
-    color: #555;
-}
-
-.ripple-btn {
-    display: inline-block;
-    padding: 12px 20px;
-    background: #93B537;
     color: white;
-    border-radius: 6px;
-    text-decoration: none;
+    background: url('images/injured-sick-hedgehog-blog_b2198dd6-5ee8-4c2c-88a8-2e8c9e3ca7eb.jpg') center/cover no-repeat;
+    overflow: hidden;
 }
 
-/* =========================
-   STORY SECTION
-========================= */
-.story-section {
-    padding: 100px 20px;
-    background: #f4f7f4;
+.emergency::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(180, 20, 20, 0.78);
 }
 
-/* BLOCK */
-.story-block {
-    max-width: 800px;
-    margin: 80px auto;
-    text-align: center;
-
-    opacity: 0;
-    transform: translateY(80px);
-    transition: all 0.8s ease;
+.emergency-content {
+    position: relative;
+    z-index: 2;
+    max-width: 700px;
+    padding: 20px;
 }
 
-/* IMAGE */
-.story-block img {
-    width: 100%;
-    max-width: 500px;
-    border-radius: 16px;
+.emergency h2 {
+    font-size: 2.8rem;
     margin-bottom: 20px;
-
-    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
 }
 
-/* TEXT */
-.story-text {
-    opacity: 0;
-    transform: translateY(40px);
-    transition: all 0.8s ease 0.3s;
+.emergency-sub {
+    font-size: 1.25rem;
+    margin-bottom: 15px;
+    opacity: 0.95;
 }
 
-/* ACTIVE (when visible) */
-.story-block.show {
-    opacity: 1;
-    transform: translateY(0);
+.emergency-number {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin: 15px 0;
 }
 
-.story-block.show .story-text {
-    opacity: 1;
-    transform: translateY(0);
+.emergency-time {
+    font-size: 1.1rem;
+    margin-bottom: 30px;
+    opacity: 0.9;
 }
 
+.emergency-cta {
+    display: inline-block;
+    padding: 14px 28px;
+    background: white;
+    color: #b71c1c;
+    border-radius: 50px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.emergency-cta:hover {
+    background: #f5f5f5;
+    transform: translateY(-2px);
+}
+
+/* ====================== FOOTER ====================== */
+footer {
+    background: #1B5E20;
+    color: white;
+    text-align: center;
+    padding: 25px;
+    font-size: 14px;
+}

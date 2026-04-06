@@ -3,30 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wildlives Rescue</title>
-
+    <title>Wildlives Rescue - Caring for British Wildlife</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<!-- HEADER -->
+<!-- HEADER - Slightly Smaller -->
 <header>
-  <a href="index.html" class="logo">
-    <img src="images/logo.png" alt="Wildlives Logo">
-  </a>
-    <nav>
-        <a href="#">About</a>
-        <a href="#">Projects</a>
-        <a href="help.html">Donate</a>
-        <a href="#">Contact</a>
-    </nav>
-</header>
+    <div class="header-container">
+        <a href="index.html" class="logo-text">Wildlives</a>
+        
+        <nav class="main-nav">
+            <a href="about.html">About Us</a>
+            <a href="projects.html">Our Projects</a>
+            <a href="help.html">How You Can Help</a>
+            <a href="Emergency/emergency.css">Emergency Help</a>
+            <a href="newsletter.html">Newsletter</a>
+        </nav>
 
-<!-- FLOATING EMERGENCY BUTTON -->
-<div class="emergency-btn" onclick="scrollToEmergency()">
-    🚨 Emergency
-</div>
+        <a href="#emergency" class="emergency-btn">🚨 Emergency</a>
+    </div>
+</header>
 
 <!-- HERO -->
 <section class="hero">
@@ -42,7 +40,6 @@
     <div class="hero-content">
         <h2>Rescuing British Wildlife</h2>
         <p>Helping animals recover and return to the wild.</p>
-        <!-- Updated Donate Button -->
         <a href="help.html" class="donate-btn">Donate Now</a>
     </div>
 </section>
@@ -82,10 +79,10 @@
     </div>
 </section>
 
-<!-- EMERGENCY -->
+<!-- EMERGENCY SECTION -->
 <section class="emergency" id="emergency">
     <div class="emergency-content">
-        <h2><a href="emergency.html">Emergency Wildlife Rescue</a></h2>
+        <h2>Emergency Wildlife Rescue</h2>
         <p class="emergency-sub">Found a sick, injured or orphaned animal?</p>
         <p class="emergency-number">Call <strong>07802 767016</strong></p>
         <p class="emergency-time">Available 9:30 – 4:30 daily</p>
@@ -95,7 +92,7 @@
 
 <!-- FOOTER -->
 <footer>
-    <p>© 2026 Wildlives Rescue</p>
+    <p>© 2026 Wildlives Rescue • Caring for British Wildlife</p>
 </footer>
 
 <script>
@@ -109,11 +106,6 @@ document.addEventListener("DOMContentLoaded", function () {
         slides[index].classList.add("active");
     }, 3000);
 });
-
-/* SCROLL TO EMERGENCY */
-function scrollToEmergency() {
-    document.getElementById("emergency").scrollIntoView({ behavior: "smooth" });
-}
 </script>
 
 </body>
