@@ -3,26 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Logo Lock Test</title>
+    <title>Wildlives Test - Fixed Header</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Important: Load header.css AFTER style.css -->
+    <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="../header.css">
-    
-    <style>
-        body {
-            font-family: 'Poppins', sans-serif;
-            margin: 0;
-            background: #f8f9f8;
-        }
-        .demo {
-            padding: 100px 30px;
-            text-align: center;
-            color: #333;
-        }
-    </style>
+    <link rel="stylesheet" href="test.css">
 </head>
 <body>
 
+    <!-- Fixed Unified Header -->
     <header>
         <div class="header-container">
             <a href="../index.html" class="logo-text">Wildlives</a>
@@ -32,19 +24,18 @@
                 <a href="../about/about.html">About Us</a>
                 <a href="../projects.html">Our Projects</a>
                 <a href="../help.html">How You Can Help</a>
-                <a href="emergency.html">Emergency Help</a>
+                <a href="../Emergency/emergency.html">Emergency Help</a>
                 <a href="../newsletter/newsletter.html">Newsletter</a>
             </nav>
 
-            <a href="emergency.html" class="emergency-btn">🚨 Emergency</a>
+            <a href="../Emergency/emergency.html" class="emergency-btn">Emergency</a>
         </div>
     </header>
 
-    <div class="demo">
-        <h1>Logo Size Should Now Be Locked</h1>
-        <p>Open this page and emergency.html side by side and switch between them.</p>
-        <p>The "Wildlives" logo should stay exactly the same size.</p>
-    </div>
+    <main style="padding: 60px 20px; text-align: center;">
+        <h1>Header Test Page (Inside test/ folder)</h1>
+        <p>The logo "Wildlives" and the red Emergency button should now look **exactly** the same as on index.html.</p>
+    </main>
 
 </body>
 </html>

@@ -1,0 +1,109 @@
+/* test.css - Fixes for header alignment */
+
+.header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;   /* This is the key fix */
+    flex-wrap: nowrap;
+    gap: 20px;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 30px;
+}
+
+.logo-text {
+    font-size: 28px;
+    font-weight: 700;
+    color: white;
+    text-decoration: none;
+    white-space: nowrap;           /* Prevents stretching */
+    flex-shrink: 0;                /* Stops it from shrinking or expanding weirdly */
+}
+
+.main-nav {
+    display: flex;
+    gap: 25px;
+    flex-wrap: wrap;
+    justify-content: center;
+    flex: 1;                       /* Takes available space */
+}
+
+.main-nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.emergency-btn {
+    background-color: #e63939;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 600;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+/* Optional: Make it look better on smaller screens */
+@media (max-width: 900px) {
+    .main-nav {
+        gap: 15px;
+        font-size: 0.95rem;
+    }
+}/* test.css - Fixes for header alignment */
+
+.header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;   /* This is the key fix */
+    flex-wrap: nowrap;
+    gap: 20px;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 30px;
+}
+
+.logo-text {
+    font-size: 28px;
+    font-weight: 700;
+    color: white;
+    text-decoration: none;
+    white-space: nowrap;           /* Prevents stretching */
+    flex-shrink: 0;                /* Stops it from shrinking or expanding weirdly */
+}
+
+.main-nav {
+    display: flex;
+    gap: 25px;
+    flex-wrap: wrap;
+    justify-content: center;
+    flex: 1;                       /* Takes available space */
+}
+
+.main-nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.emergency-btn {
+    background-color: #e63939;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 600;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+/* Optional: Make it look better on smaller screens */
+@media (max-width: 900px) {
+    .main-nav {
+        gap: 15px;
+        font-size: 0.95rem;
+    }
+}
