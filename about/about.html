@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | Wildlives Rescue</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="about.css">
+</head>
+<body>
+
+<!-- HEADER - Exact match to Emergency page -->
+<header>
+    <div class="header-container">
+        <a href="../index.html" class="logo-text">Wildlives</a>
+        
+        <nav class="main-nav">
+            <a href="../index.html">Home</a>
+            <a href="about.html">About Us</a>
+            <a href="../projects.html">Our Projects</a>
+            <a href="../help.html">How You Can Help</a>
+            <a href="../Emergency/emergency.html">Emergency Help</a>
+            <a href="../newsletter/newsletter.html">Newsletter</a>
+        </nav>
+
+        <a href="../Emergency/emergency.html" class="emergency-btn">🚨 Emergency</a>
+    </div>
+</header>
+
+<!-- HERO - Your preferred About look -->
+<section class="about-hero">
+    <div class="hero-content">
+        <div class="hero-image">
+            <img src="../images/doncoombez-MbrQXGQ1mfM-unsplash (1).jpg" alt="Wildlives Rescue">
+        </div>
+
+        <div class="hero-text">
+            <h1>Rescuing British Wildlife</h1>
+            <p class="tagline">Dedicated to the rescue, rehabilitation and release of injured, sick and orphaned wild animals across the UK.</p>
+            <p>Since 2018, our small team has helped thousands of animals return to the wild — from hedgehogs and baby birds to foxes and deer.</p>
+            <a href="#our-story" class="cta-btn">Learn Our Story</a>
+        </div>
+    </div>
+</section>
+
+<!-- STORY SECTIONS with your content -->
+<section class="story-section" id="our-story">
+
+    <div class="story-block">
+        <div class="story-image">
+            <img src="../images/team.jpg" alt="Our Team">
+        </div>
+        <div class="story-text">
+            <h2>Who We Are</h2>
+            <p>Wildlives Rescue was founded in 2018 by a group of passionate volunteers who saw the growing need for professional wildlife care in our local area.</p>
+        </div>
+    </div>
+
+    <div class="story-block reverse">
+        <div class="story-image">
+            <img src="../images/rescue-work.jpg" alt="Rescue Work">
+        </div>
+        <div class="story-text">
+            <h2>What We Do</h2>
+            <p>Wildlives rescues, treats and hopefully goes on to release everything from Bats to Barn Owls, Hedgehogs to Herons.</p>
+            <p>Different enclosures, covering 6 acres of land, provide as natural an environment as possible for our patients.</p>
+            <p>We are a member of the <strong>European Wildlife Rehabilitation Association</strong>.</p>
+            <a href="../newsletter/newsletter.html" class="newsletter-btn">Read Our Newsletters →</a>
+        </div>
+    </div>
+
+    <div class="story-block">
+        <div class="story-image">
+            <img src="../images/release.jpg" alt="Animal Release">
+        </div>
+        <div class="story-text">
+            <h2>Our Charitable Objectives</h2>
+            <p>Wildlives' charitable objectives are as follows:</p>
+            <ol>
+                <li>To provide treatment and care for sick, injured and orphaned wildlife with the ultimate aim of rehabilitating them back into the wild.</li>
+                <li>To inform people about, and to create public awareness of, wildlife and all issues relating to the benefit of wildlife.</li>
+            </ol>
+            <p>Wildlives will provide care and basic medical treatment for wildlife, and ensure that a bird or animal gets veterinary treatment where required.</p>
+            <p>With all animals brought into the Centre, the ultimate aim will be to release them back into the wild without taming them.</p>
+        </div>
+    </div>
+
+    <div class="story-block reverse">
+        <div class="story-image">
+            <img src="../images/volunteers.jpg" alt="Volunteers">
+        </div>
+        <div class="story-text">
+            <h2>Euthanasia Policy</h2>
+            <p>No animal with a chance of a good quality of life is ever put to sleep. Although the vast majority of our charges return successfully to the wild, some are left with ongoing disabilities and become permanent residents or are fostered to approved carers.</p>
+            <p>Sometimes, sadly, an animal has injuries that prohibit any acceptable quality of life and must be euthanised humanely.</p>
+            <p>The greatest reward is seeing healthy animals successfully released back into the wild.</p>
+        </div>
+    </div>
+
+</section>
+
+<footer>
+    <p>© 2026 Wildlives Rescue • Caring for British Wildlife</p>
+</footer>
+
+<script>
+// Scroll reveal
+const storyBlocks = document.querySelectorAll('.story-block');
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('show');
+        }
+    });
+}, { threshold: 0.15 });
+
+storyBlocks.forEach(block => observer.observe(block));
+</script>
+
+</body>
+</html>

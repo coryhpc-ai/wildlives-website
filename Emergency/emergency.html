@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emergency Wildlife Help | Wildlives Rescue</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Main global stylesheet (without header styles) -->
+    <link rel="stylesheet" href="../style.css">
+    
+    <!-- Dedicated header stylesheet -->
+    <link rel="stylesheet" href="../header.css">
+    
+    <!-- Emergency page specific styles -->
+    <link rel="stylesheet" href="emergency.css">
+</head>
+<body>
+
+    <!-- Clean Header using header.css -->
+    <header>
+        <div class="header-container">
+            <a href="../index.html" class="logo-text">Wildlives</a>
+            
+            <nav class="main-nav">
+                <a href="../index.html">Home</a>
+                <a href="../about/about.html">About Us</a>
+                <a href="../projects.html">Our Projects</a>
+                <a href="../help.html">How You Can Help</a>
+                <a href="emergency.html">Emergency Help</a>
+                <a href="../newsletter/newsletter.html">Newsletter</a>
+            </nav>
+
+            <a href="emergency.html" class="emergency-btn">🚨 Emergency</a>
+        </div>
+    </header>
+
+    <!-- Rest of your emergency page remains the same -->
+    <!-- HERO -->
+    <section class="emergency-hero">
+        <div class="hero-left">
+            <h1>Wildlife Emergency</h1>
+            <p class="sub">If you find an injured or sick animal, act immediately.</p>
+            <p class="info">Answer a few quick questions to get the best advice.</p>
+
+            <!-- QUIZ -->
+            <div class="quiz-box">
+                <h3>Wildlife Emergency Checker</h3>
+
+                <div class="step active" id="step1">
+                    <p>What animal did you find?</p>
+                    <div class="animal-buttons">
+                        <button onclick="selectAnimal('hedgehog')">Hedgehog</button>
+                        <button onclick="selectAnimal('bird')">Bird</button>
+                        <button onclick="selectAnimal('fox')">Fox</button>
+                        <button onclick="selectAnimal('deer')">Deer</button>
+                        <button onclick="selectAnimal('rabbit')">Rabbit</button>
+                        <button onclick="selectAnimal('other')">Other</button>
+                    </div>
+                </div>
+
+                <div class="step" id="step2">
+                    <p>What is the animal's condition?</p>
+                    <div class="animal-buttons">
+                        <button onclick="setCondition('injured')">Injured or bleeding</button>
+                        <button onclick="setCondition('attacked')">Attacked by cat/dog</button>
+                        <button onclick="setCondition('trapped')">Trapped or tangled</button>
+                        <button onclick="setCondition('flies')">Covered in flies/maggots</button>
+                        <button onclick="setCondition('collapsed')">Collapsed or cold</button>
+                        <button onclick="setCondition('normal')">Looks okay / active</button>
+                    </div>
+                </div>
+
+                <div class="step" id="stepBaby">
+                    <p>Is this a baby animal?</p>
+                    <div class="animal-buttons">
+                        <button onclick="setBaby(true)">Yes</button>
+                        <button onclick="setBaby(false)">No</button>
+                    </div>
+                </div>
+
+                <div id="result" class="result-container"></div>
+            </div>
+        </div>
+
+        <div class="hero-right">
+            <div class="hero-slideshow">
+                <img src="../images/IMG_5915.jpg" class="active" alt="Wildlife">
+                <img src="../images/IMG_5914.jpg" alt="Wildlife">
+                <img src="../images/IMG_5924.jpg" alt="Wildlife">
+                <img src="../images/IMG_5926.jpg" alt="Wildlife">
+            </div>
+        </div>
+    </section>
+
+    <!-- WHAT TO DO -->
+    <section class="quick-steps">
+        <h2>What To Do</h2>
+        <div class="grid">
+            <div class="card"><h3>Stay Calm</h3><p>Keep your distance and avoid stressing the animal.</p></div>
+            <div class="card"><h3>Do Not Treat</h3><p>Do not attempt to feed or treat injuries yourself.</p></div>
+            <div class="card"><h3>Keep Safe</h3><p>If possible, place the animal somewhere quiet and contained.</p></div>
+            <div class="card"><h3>Call For Help</h3><p>Contact us immediately for professional advice.</p></div>
+        </div>
+    </section>
+
+    <!-- COMMON SITUATIONS -->
+    <section class="animal-help">
+        <h2>Common Situations</h2>
+        <div class="animal-grid">
+            <div class="animal-card" data-animal="hedgehog">
+                <img src="../images/IMG_5933.jpg" alt="Hedgehog">
+                <h3>Hedgehogs</h3>
+                <button onclick="showAnimalInfo('hedgehog')">Show Info</button>
+            </div>
+            <div class="animal-card" data-animal="birds">
+                <img src="../images/IMG_5928.jpg" alt="Bird">
+                <h3>Birds</h3>
+                <button onclick="showAnimalInfo('birds')">Show Info</button>
+            </div>
+            <div class="animal-card" data-animal="fox">
+                <img src="../images/baby fox (3).jpg" alt="Fox">
+                <h3>Fox Cubs</h3>
+                <button onclick="showAnimalInfo('fox')">Show Info</button>
+            </div>
+            <div class="animal-card" data-animal="deer">
+                <img src="../images/baby fawn (1).jpg" alt="Deer">
+                <h3>Deer</h3>
+                <button onclick="showAnimalInfo('deer')">Show Info</button>
+            </div>
+        </div>
+
+        <div class="animal-info" id="animalInfo">
+            <div class="info-content" id="infoContent"></div>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2026 Wildlives Rescue • Caring for British Wildlife</p>
+    </footer>
+
+<script>
+    // Your existing script remains unchanged
+    let animal = "", condition = "", isBaby = null;
+
+    function hideAllSteps() {
+        document.querySelectorAll('.step').forEach(step => {
+            step.style.opacity = "0";
+            setTimeout(() => {
+                step.classList.remove('active');
+            }, 400);
+        });
+    }
+
+    function selectAnimal(type) {
+        animal = type;
+        hideAllSteps();
+        const nextStep = document.getElementById('step2');
+        setTimeout(() => {
+            nextStep.classList.add('active');
+            nextStep.style.opacity = "1";
+        }, 400);
+    }
+
+    function setCondition(type) {
+        condition = type;
+        hideAllSteps();
+
+        if (["injured", "attacked", "trapped", "flies", "collapsed"].includes(type)) {
+            setTimeout(showResult, 400);
+        } else {
+            const babyStep = document.getElementById('stepBaby');
+            setTimeout(() => {
+                babyStep.classList.add('active');
+                babyStep.style.opacity = "1";
+            }, 400);
+        }
+    }
+
+    function setBaby(value) {
+        isBaby = value;
+        hideAllSteps();
+        setTimeout(showResult, 400);
+    }
+
+    function showResult() {
+        hideAllSteps();
+        
+        const resultDiv = document.getElementById("result");
+        let html = "";
+
+        if (["injured","attacked","trapped","flies","collapsed"].includes(condition)) {
+            html = `
+                <div class="result-box result-urgent">
+                    <span class="icon">🚨</span>
+                    <h3>Urgent - Call Now</h3>
+                    <p>This animal needs professional help immediately.</p>
+                    <p class="big-number">07802 767016</p>
+                </div>`;
+        } 
+        else if (isBaby === true) {
+            html = `
+                <div class="result-box result-warning">
+                    <span class="icon">👶</span>
+                    <h3>Baby Animal</h3>
+                    <p>The mother is likely nearby. Observe from a distance for 1 hour.</p>
+                </div>`;
+        } 
+        else if (animal === "hedgehog") {
+            html = `
+                <div class="result-box result-warning">
+                    <span class="icon">🦔</span>
+                    <h3>Hedgehog Needs Help</h3>
+                    <p>Hedgehogs active in daylight are usually in trouble.</p>
+                </div>`;
+        } 
+        else if (animal === "bird") {
+            html = `
+                <div class="result-box result-safe">
+                    <span class="icon">🐦</span>
+                    <h3>Likely Normal</h3>
+                    <p>This may be a fledgling learning to fly.</p>
+                </div>`;
+        } 
+        else {
+            html = `
+                <div class="result-box result-safe">
+                    <span class="icon">✅</span>
+                    <h3>Situation Looks Normal</h3>
+                    <p>Keep an eye on it for a while.</p>
+                </div>`;
+        }
+
+        resultDiv.innerHTML = html;
+        resultDiv.style.display = "flex";
+        resultDiv.style.opacity = "0";
+        
+        setTimeout(() => {
+            resultDiv.style.transition = "opacity 0.5s ease";
+            resultDiv.style.opacity = "1";
+        }, 400);
+    }
+
+    const animalData = {
+        hedgehog: `<h3>Hedgehogs</h3><p>Daytime activity usually means they need help.</p>`,
+        birds: `<h3>Birds</h3><p>Fledglings are often learning to fly.</p>`,
+        fox: `<h3>Fox Cubs</h3><p>Mother may still be nearby.</p>`,
+        deer: `<h3>Deer</h3><p>Fawns are often left alone safely.</p>`
+    };
+
+    function showAnimalInfo(type) {
+        document.getElementById("infoContent").innerHTML = animalData[type] || "<p>More information coming soon.</p>";
+        document.getElementById("animalInfo").style.display = "block";
+    }
+</script>
+
+</body>
+</html>

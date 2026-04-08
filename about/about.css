@@ -1,0 +1,247 @@
+/* ====================== ABOUT PAGE CSS - HEADER MATCHED TO EMERGENCY ====================== */
+
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+}
+
+/* HEADER - Tuned to match Emergency page exactly */
+header {
+    height: 60px;
+    background: #1B5E20;
+    display: flex;
+    align-items: center;
+    padding: 0 25px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1360px;
+    margin: 0 auto;
+}
+
+.logo-text {
+    color: white;
+    font-size: 26px;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.main-nav {
+    display: flex;
+    align-items: center;
+    gap: 20px;               /* Reduced gap to match your screenshot */
+}
+
+.main-nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 15.5px;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.main-nav a:hover {
+    color: #a5d6a7;
+}
+
+.emergency-btn {
+    background: #d32f2f;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 50px;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+.emergency-btn:hover {
+    background: #b71c1c;
+    transform: scale(1.05);
+}
+
+/* HERO */
+.about-hero {
+    height: 65vh;
+    width: 100%;
+    min-height: 520px;
+    display: flex;
+    align-items: stretch;
+    background: #f8faf7;
+    overflow: hidden;
+}
+
+.hero-content {
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+
+.hero-image {
+    flex: 3;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-image img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.hero-text {
+    flex: 0.92;
+    background: #1B5E20;
+    color: white;
+    padding: 60px 48px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 460px;
+}
+
+.hero-text h1 {
+    font-size: 2.75rem;
+    line-height: 1.15;
+    margin-bottom: 20px;
+}
+
+.hero-text .tagline {
+    font-size: 1.25rem;
+    margin-bottom: 24px;
+    opacity: 0.95;
+}
+
+.hero-text p {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    margin-bottom: 32px;
+    opacity: 0.9;
+}
+
+.cta-btn {
+    display: inline-block;
+    background: white;
+    color: #1B5E20;
+    padding: 15px 38px;
+    border-radius: 50px;
+    font-weight: 600;
+    text-decoration: none;
+    align-self: flex-start;
+    transition: all 0.3s ease;
+}
+
+.cta-btn:hover {
+    transform: translateY(-4px);
+}
+
+/* STORY SECTION */
+.story-section {
+    padding: 100px 40px;
+    background: #f7f9f7;
+    width: 100%;
+}
+
+.story-block {
+    display: flex;
+    align-items: center;
+    gap: 80px;
+    max-width: 1250px;
+    margin: 0 auto 140px auto;
+    opacity: 0;
+    transform: translateY(60px);
+    transition: all 1s ease;
+}
+
+.story-block.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.story-block.reverse {
+    flex-direction: row-reverse;
+}
+
+.story-image img {
+    width: 100%;
+    height: 420px;
+    object-fit: cover;
+    border-radius: 16px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+}
+
+.story-text h2 {
+    font-size: 2.35rem;
+    color: #1B5E20;
+    margin-bottom: 25px;
+}
+
+.story-text p {
+    font-size: 1.15rem;
+    line-height: 1.78;
+    color: #444;
+    margin-bottom: 20px;
+}
+
+.newsletter-btn {
+    display: inline-block;
+    background: #1B5E20;
+    color: white;
+    padding: 14px 32px;
+    border-radius: 50px;
+    font-weight: 600;
+    text-decoration: none;
+    margin-top: 15px;
+    transition: all 0.3s;
+}
+
+.newsletter-btn:hover {
+    background: #2e7d32;
+    transform: translateY(-3px);
+}
+
+/* MOBILE */
+@media (max-width: 968px) {
+    header {
+        height: auto;
+        padding: 15px 20px;
+    }
+    
+    .header-container {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .about-hero {
+        height: auto;
+        min-height: 520px;
+        flex-direction: column;
+    }
+    
+    .hero-image {
+        height: 360px;
+        order: 1;
+    }
+    
+    .hero-text {
+        order: 2;
+        padding: 55px 40px;
+    }
+}

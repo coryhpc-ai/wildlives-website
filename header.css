@@ -1,0 +1,75 @@
+/* ====================== HEADER.CSS - FINAL LOCKED VERSION ====================== */
+
+header {
+    height: 60px;
+    background: #1B5E20;
+    display: flex;
+    align-items: center;
+    padding: 0 25px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1350px;
+    margin: 0 auto;
+}
+
+/* Locked Logo */
+.logo-text {
+    color: white !important;
+    font-size: 26px !important;
+    font-weight: 700 !important;
+    text-decoration: none;
+    flex-shrink: 0;
+    line-height: 1;
+    white-space: nowrap;
+}
+
+/* Tight Nav */
+.main-nav {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+}
+
+.main-nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 15.8px;
+    font-weight: 500;
+    white-space: nowrap;
+    line-height: 1;
+    padding: 3px 0;
+}
+
+.main-nav a:hover {
+    color: #a5d6a7;
+}
+
+/* LOCKED EMERGENCY BUTTON */
+.emergency-btn {
+    background: #d32f2f !important;
+    color: white !important;
+    padding: 10px 22px !important;     /* Consistent padding */
+    border-radius: 50px;
+    font-size: 14.5px !important;       /* Locked font size */
+    font-weight: 600;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+    white-space: nowrap;
+}
+
+.emergency-btn:hover {
+    background: #b71c1c;
+    transform: scale(1.05);
+}
